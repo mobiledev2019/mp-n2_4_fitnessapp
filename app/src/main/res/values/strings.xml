@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GymProject</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="category_explorer">Explore</string>
+    <string name="category_counting">Count</string>
+    <string name="category_remind">Remind</string>
+    <string name="category_target">Target</string>
+</resources>
