@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/_menu"
+    tools:showIn = "navigation_view">
+
+    <group>
+        <item android:id="@+id/profile" android:title="My profile" android:icon="@drawable/ic_person_black_24dp"/>
+        <item android:id="@+id/remind" android:title="Remind" android:icon="@drawable/ic_access_alarm_black_24dp"/>
+        <item android:id="@+id/gym" android:title="Gym location" android:icon="@drawable/ic_fitness_center_black_24dp"/>
+        <item android:id="@+id/share" android:title="Share with friends" android:icon="@drawable/ic_public_black_24dp"/>
+        <item android:id="@+id/setting" android:title="Setting" android:icon="@drawable/ic_settings_black_24dp"/>
+        <item android:id="@+id/logout" android:title="Log out" android:icon="@drawable/ic_power_settings_new_black_24dp"/>
+    </group>
+
+    <group android:id="@+id/gr2">
+        <item android:id="@+id/fb" android:title="Feedback" />
+        <item android:id="@+id/res" android:title="Statement of Responsibility" />
+        <item android:id="@+id/aboutus" android:title="About us" />
+
+    </group>
+</menu>

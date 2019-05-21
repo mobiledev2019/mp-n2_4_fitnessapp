@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvItemExName"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"/>
+
+    <!--<NumberPicker-->
+        <!--android:id="@+id/npRepetition"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="wrap_content"></NumberPicker>-->
+
+    <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
+        android:id="@+id/npRepetition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:snp_scrollEnabled="true"
+        app:snp_maxValue="10"
+        app:snp_minValue="1"
+        app:snp_stepSize="1"
+        app:snp_updateInterval="100"
+        app:snp_value="1"
+        app:snp_buttonIconLeft="@drawable/ic_chevron_left_black_24dp"
+        app:snp_buttonIconRight="@drawable/ic_chevron_right_black_24dp"
+        app:snp_buttonTouchScaleFactor="0.8"
+        app:snp_orientation="horizontal"
+        app:snp_value_text_color="@color/colorPrimary"
+        app:snp_value_text_size="16sp"
+        app:snp_value_text_appearance="?android:attr/textAppearanceMedium"/>
+
+    <CheckBox
+        android:id="@+id/cbItemExCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"/>
+</LinearLayout>

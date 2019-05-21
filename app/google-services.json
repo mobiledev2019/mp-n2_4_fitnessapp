@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "469321592778",
+    "firebase_url": "https://gymdatabase-1b256.firebaseio.com",
+    "project_id": "gymdatabase-1b256",
+    "storage_bucket": "gymdatabase-1b256.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469321592778:android:3e26ae961cebbfbd",
+        "android_client_info": {
+          "package_name": "com.example.gymproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469321592778-s3gcchj10tc2hbraj04rvjohetjnccdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMoi9XLsKTxdJ4qKDmS1dk7kJ8Swjutiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469321592778-s3gcchj10tc2hbraj04rvjohetjnccdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469321592778:android:dafbaf7f7d399639",
+        "android_client_info": {
+          "package_name": "com.example.lazyguy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469321592778-s3gcchj10tc2hbraj04rvjohetjnccdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMoi9XLsKTxdJ4qKDmS1dk7kJ8Swjutiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469321592778-s3gcchj10tc2hbraj04rvjohetjnccdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

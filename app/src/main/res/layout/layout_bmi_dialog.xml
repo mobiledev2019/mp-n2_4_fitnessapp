@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:id="@+id/rlbmidialog">
+
+    <TextView
+        android:id="@+id/tvBMIdialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your BMI result is"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/tvBMIresult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="10.0"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_below="@id/tvBMIdialog"/>
+
+    <TextView
+        android:id="@+id/tvBMIcmt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You are too fat"
+        android:textAlignment="center"
+        android:layout_below="@+id/tvBMIresult"/>
+</RelativeLayout>

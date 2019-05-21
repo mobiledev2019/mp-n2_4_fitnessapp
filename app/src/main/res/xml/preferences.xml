@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Units of measurement">
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="mass_switch"
+            android:title="Unit of mass"
+            android:summary="Off = Kg, On = Ibs" />
+
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="length_switch"
+            android:title="Unit of length"
+            android:summary="Off = Cm, On = Inch" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="User Info">
+
+        <ListPreference
+            android:defaultValue="US"
+            android:entries="@array/pref_nationality"
+            android:entryValues="@array/pref_nationality"
+            android:key="nationality"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Nationality" />
+
+        <EditTextPreference
+            android:capitalize="words"
+            android:defaultValue="Naruto"
+            android:inputType="textCapWords"
+            android:key="edt_nickname"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Nickname"
+            android:summary="Choose a nickname we can call you"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="More">
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="assistant_switch"
+            android:title="App assistant"
+            android:summary="Off = disable, On = enable" />
+    </PreferenceCategory>
+</PreferenceScreen>

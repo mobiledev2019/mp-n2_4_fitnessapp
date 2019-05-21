@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Sound" app:showAsAction="always" android:icon="@drawable/ic_volume_up_black_24dp"
+        android:orderInCategory="10" android:id="@+id/action_practice_sound"/>
+
+    <item android:title="Info" app:showAsAction="always" android:icon="@drawable/ic_error_black_24dp"
+        android:orderInCategory="10" android:id="@+id/action_practice_info"/>
+</menu>

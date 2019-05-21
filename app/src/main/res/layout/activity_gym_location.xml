@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.GymLocationActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbGym"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/white"
+        app:title="Gym Location"
+        app:navigationIcon="@drawable/ic_arrow">
+    </android.support.v7.widget.Toolbar>
+
+
+    <fragment
+        android:id="@+id/myMap"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_below="@+id/tbGym"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </fragment>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fbtnMyLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_my_location_black_24dp"
+            app:backgroundTint="@color/white" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fbtnGym"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_fitness_center_black_24dp"
+            app:backgroundTint="@color/white"
+            app:rippleColor="@color/com_facebook_button_background_color_disabled" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fbtnMapLayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_layers_black_24dp"
+            app:backgroundTint="@color/white" />
+    </LinearLayout>
+
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/svLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tbGym"
+        android:background="@color/white"
+        android:layout_margin="10dp"
+        app:queryHint="Where do you want to practice ?"
+        app:iconifiedByDefault="false"></android.support.v7.widget.SearchView>
+
+    <SeekBar
+        android:id="@+id/sbRadius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/svLocation" />
+
+    <TextView
+        android:id="@+id/tvRadius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:text="1.0 km"
+        android:layout_below="@+id/sbRadius"
+        android:gravity="center"/>
+</RelativeLayout>
