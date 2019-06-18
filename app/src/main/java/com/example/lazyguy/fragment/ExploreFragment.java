@@ -11,6 +11,7 @@ import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.preference.PreferenceManager;
@@ -19,7 +20,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lazyguy.activity.GymLocationActivity;
@@ -52,7 +56,10 @@ public class ExploreFragment extends Fragment {
     private FloatingActionButton fbtMic;
     TextToSpeech mTTS;
     private static final int REQUEST_CODE_SPEECH_INPUT = 1000;
+    private TextView tvHistory;
+    private ImageView imgHistory, imgDelete;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("RestrictedApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -117,8 +124,13 @@ public class ExploreFragment extends Fragment {
             }
         });
 
+        SharedPreferences pre = getActivity().getSharedPreferences("SavingPractice", MODE_PRIVATE);
+        String explorer = pre.getString("explorer", "");
+        String program = pre.getString("program", "");
+        String exid = pre.getString("exid", "");
+        String message = "You have trained at " + program + " in " + explorer;
+        tvHistory.setText(message);
         onclick();
-
         return rootView;
     }
 
@@ -154,6 +166,34 @@ public class ExploreFragment extends Fragment {
             public void onClick(View v) {
                 speak("What do you want boss ?");
                 record();
+            }
+        });
+
+        imgHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pre = getActivity().getSharedPreferences("SavingPractice", MODE_PRIVATE);
+                String explorer = pre.getString("explorer", "");
+                String program = pre.getString("program", "");
+                String message = "You have trained at " + program + " in " + explorer;
+                tvHistory.setText(message);
+            }
+        });
+
+        imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pre = getActivity().getSharedPreferences("SavingPractice", MODE_PRIVATE);
+                SharedPreferences.Editor edit = pre.edit();
+                String explorer = "Beginner";
+                String program = "Part 1";
+                edit.putString("explorer", explorer);
+                edit.putString("program", program);
+                edit.commit();
+                explorer = pre.getString("explorer", "");
+                program = pre.getString("program", "");
+                String message = "You have trained at " + program + " in " + explorer;
+                tvHistory.setText(message);
             }
         });
     }
@@ -240,5 +280,8 @@ public class ExploreFragment extends Fragment {
     public void AnhXa (View view) {
         lvExplorer = view.findViewById(R.id.lvExplorer);
         fbtMic = view.findViewById(R.id.fbtMic);
+        tvHistory = view.findViewById(R.id.tvHistory);
+        imgHistory = view.findViewById(R.id.imgRefreshHistory);
+        imgDelete = view.findViewById(R.id.imgDeleteHistory);
     }
 }

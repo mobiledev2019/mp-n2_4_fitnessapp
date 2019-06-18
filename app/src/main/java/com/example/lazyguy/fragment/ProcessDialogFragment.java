@@ -28,7 +28,7 @@ public class ProcessDialogFragment extends AppCompatDialogFragment {
         tvConfirm.setText("Do you want to continue your process at " + program + " in " + explorer + " ?");
         builder.setView(view)
                 .setTitle("Your process")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getContext(), ProgramActivity.class);

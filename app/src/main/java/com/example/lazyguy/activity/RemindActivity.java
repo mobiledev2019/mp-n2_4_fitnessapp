@@ -31,8 +31,8 @@ import java.util.Date;
 
 public class RemindActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
 
-    private TextView tvBreakfast, tvLunch, tvDinner, tvDrinkQuestion;
-    private Switch swBreakfast, swLunch, swDinner, swDrink;
+    private TextView tvBreakfast, tvLunch, tvDinner, tvDrinkQuestion, tvEx;
+    private Switch swBreakfast, swLunch, swDinner, swDrink, swEx;
     private String tag = "";
     private Intent myIntent1, myIntent2, myIntent3;
     private RadioGroup rgDrink;
@@ -84,11 +84,30 @@ public class RemindActivity extends AppCompatActivity implements TimePickerDialo
             Toast.makeText(this, "Set dinner time", Toast.LENGTH_SHORT).show();
             t = 3;
         }
+        if (tag.equals("excercise")){
+            Toast.makeText(this, "Set excercise time", Toast.LENGTH_SHORT).show();
+            t = 10;
+        }
         updateTimeText(c, t);
         startAlarm(c, t);
     }
 
     public void checkSwitch () {
+        swEx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked) {
+                    edit.putBoolean("Excercise", false);
+                    edit.commit();
+                    cancelAlarm(10);
+                    tvEx.setVisibility(View.INVISIBLE);
+                } else {
+                    edit.putBoolean("Excercise", true);
+                    edit.commit();
+                    tvEx.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         swBreakfast.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -165,6 +184,17 @@ public class RemindActivity extends AppCompatActivity implements TimePickerDialo
     }
 
     public void checkTextView () {
+        tvEx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (swEx.isChecked()){
+                    DialogFragment timePicker = new TimePickerFragment();
+                    tag = "excercise";
+                    timePicker.show(getSupportFragmentManager(), "excercise");
+                }
+            }
+        });
+
         tvBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -296,6 +326,14 @@ public class RemindActivity extends AppCompatActivity implements TimePickerDialo
         Boolean drinkornot = pre.getBoolean("DrinkorNot", false);
         if (drinkornot) swDrink.setChecked(true);
         else swDrink.setChecked(false);
+
+        Boolean excercise = pre.getBoolean("Excercise", false);
+        if (excercise) {
+            swEx.setChecked(true);
+            tvEx.setText(pre.getString("ExcerciseTime", "12:00"));
+        }
+        else swEx.setChecked(false);
+
         Boolean breakfast = pre.getBoolean("Breakfast", false);
         if (breakfast) {
             swBreakfast.setChecked(true);
@@ -364,6 +402,11 @@ public class RemindActivity extends AppCompatActivity implements TimePickerDialo
                 edit.commit();
                 tvDinner.setText(timeText);
                 break;
+            case 10:
+                edit.putString("ExcerciseTime", timeText);
+                edit.commit();
+                tvEx.setText(timeText);
+                break;
         }
     }
 
@@ -376,32 +419,6 @@ public class RemindActivity extends AppCompatActivity implements TimePickerDialo
             c.add(Calendar.DATE, 1);
         }
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-//        switch (type) {
-//            case 1:
-//                intent.putExtra("type", 1);
-//                PendingIntent pendingIntent1 = PendingIntent.getBroadcast(this, 1, intent, 0);
-//                if (c.before(Calendar.getInstance())) {
-//                    c.add(Calendar.DATE, 1);
-//                }
-//                alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent1);
-//                break;
-//            case 2:
-//                intent.putExtra("type", 2);
-//                PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 2, intent, 0);
-//                if (c.before(Calendar.getInstance())) {
-//                    c.add(Calendar.DATE, 1);
-//                }
-//                alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent2);
-//                break;
-//            case 3:
-//                intent.putExtra("type", 3);
-//                PendingIntent pendingIntent3 = PendingIntent.getBroadcast(this, 3, intent, 0);
-//                if (c.before(Calendar.getInstance())) {
-//                    c.add(Calendar.DATE, 1);
-//                }
-//                alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent3);
-//                break;
-//        }
     }
 
     private void cancelAlarm(int type) {
@@ -442,5 +459,7 @@ public class RemindActivity extends AppCompatActivity implements TimePickerDialo
         rbDrink4 = findViewById(R.id.rbDrink4);
         tvDrinkQuestion = findViewById(R.id.tvDrinkQuestion);
         tbRemind = findViewById(R.id.tbRemind);
+        tvEx = findViewById(R.id.tvExcercise);
+        swEx = findViewById(R.id.swExcercise);
     }
 }

@@ -8,9 +8,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.lazyguy.activity.ExcerciseActivity;
 import com.example.lazyguy.activity.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -49,6 +51,14 @@ public class NotificationHelper extends ContextWrapper {
         // When notification is tapped, call MainActivity.
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0, mainIntent, 0);
+
+        SharedPreferences pre = getSharedPreferences("SavingPractice", MODE_PRIVATE);
+        String explorer = pre.getString("explorer", "");
+        String program = pre.getString("program", "");
+        Intent exIntent = new Intent(getBaseContext(), ExcerciseActivity.class);
+        exIntent.putExtra("explorer", explorer);
+        exIntent.putExtra("program", program);
+        PendingIntent contentIntent2 = PendingIntent.getActivity(getApplicationContext(), 0, exIntent, 0);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String name = "";
@@ -93,7 +103,19 @@ public class NotificationHelper extends ContextWrapper {
                     .setGroup(GROUP_KEY_WORK_EMAIL)
                     .setDefaults(Notification.DEFAULT_ALL);
         }
-        if (type > 4 && type < 30) {
+        if (type == 10) {
+            return new NotificationCompat.Builder(getApplicationContext(), channelID)
+                    .setContentTitle("Hey Yo")
+                    .setContentText("Your excercise is waiting for you, " + name + " :)))")
+                    .setSmallIcon(R.drawable.naruto)
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setContentIntent(contentIntent2)
+                    .setPriority(Notification.PRIORITY_MAX)
+                    .setGroup(GROUP_KEY_WORK_EMAIL)
+                    .setDefaults(Notification.DEFAULT_ALL);
+        }
+        if (type > 4 && type < 30 && type != 10) {
             return new NotificationCompat.Builder(getApplicationContext(), channelID)
                     .setContentTitle("Uc Uc Uc")
                     .setContentText("Don't forget to drink " + name + " :)))")

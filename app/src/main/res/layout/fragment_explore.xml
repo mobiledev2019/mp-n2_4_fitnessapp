@@ -12,11 +12,74 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/llProgress"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="History"
+                android:textSize="15dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/tvHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center" />
+
+                <ImageView
+                    android:id="@+id/imgRefreshHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_sync_black_24dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imgDeleteHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_delete_black_24dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Program"
+                android:textSize="15dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
         <ListView
             android:nestedScrollingEnabled="true"
             android:id="@+id/lvExplorer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent"
+            android:layout_below="@id/llProgress"></ListView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fbtMic"
